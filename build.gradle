@@ -1,50 +1,20 @@
-buildscript {
-    ext {
-        springBootVersion = '2.1.8.RELEASE'
-    }
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-        classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.8.2'
-    }
+plugins {
+    id 'org.springframework.boot' version '2.1.8.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+    id 'java'
 }
 
-allprojects {
-    apply plugin: 'com.github.kt3k.coveralls'
-    apply plugin: 'jacoco'
+group = 'com.summit'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
 }
 
-
-subprojects {
-    plugins {
-        id 'org.springframework.boot' version '2.1.8.RELEASE'
-        id 'io.spring.dependency-management' version '1.0.8.RELEASE'
-        id 'java'
-    }
-
-    group = 'com.summit'
-    version = '0.0.1-SNAPSHOT'
-    sourceCompatibility = '1.8'
-
-    repositories {
-        mavenCentral()
-    }
-
-    dependencies {
-        implementation 'org.springframework.boot:spring-boot-starter-web'
-        testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    }
-
-    jacocoTestReport {
-        reprots {
-            xml.enabled = true
-            html.enabled = true
-        }
-    }
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
-
-
-
+cobertura.coverageFormats = ['html', 'xml']
