@@ -4,9 +4,33 @@ plugins {
     id 'java'
 }
 
+buildscript {
+    ext {
+        springBootVersion = '2.1.8.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.8.2'
+    }
+}
+
+apply plugin: 'com.github.kt3k.coveralls'
+apply plugin: 'jacoco'
+
 group = 'com.summit'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
+
+jacocoTestReport {
+    reprots {
+        xml.enabled = true
+        html.enabled = true
+    }
+}
+
 
 repositories {
     mavenCentral()
