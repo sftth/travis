@@ -2,6 +2,8 @@ plugins {
     id 'org.springframework.boot' version '2.1.8.RELEASE'
     id 'io.spring.dependency-management' version '1.0.8.RELEASE'
     id 'java'
+    id 'jacoco'
+    id 'com.github.kt3k.coveralls'
 }
 
 group = 'com.summit'
@@ -15,4 +17,12 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.kt3k.gradle.plugin:coverall-gradle-plugin:2.8.2'
+}
+
+jacocoTestReport{
+    reprots{
+        xml.enabled = true
+        html.enabled = true
+    }
 }
