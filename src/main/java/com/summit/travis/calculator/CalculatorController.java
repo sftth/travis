@@ -9,4 +9,10 @@ public class CalculatorController {
     public String init() {
         return "Calculator is being constructed.";
     }
+
+    @GetMapping("/login")
+    public String login() {
+        return "Login page";
+    }
+
 }
