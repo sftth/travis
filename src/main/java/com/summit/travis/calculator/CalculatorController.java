@@ -10,9 +10,8 @@ import java.util.Date;
 public class CalculatorController {
     @GetMapping("/cal")
     public String init() {
-        String returnStr = "Calculator is being constructed.";
-        String curTime = new SimpleDateFormat("HH:mm:ss").format(new Date());
-        return returnStr + ": " +curTime;
+        String returnStr = "Calculator";
+        return returnStr ;
     }
 
     @GetMapping("/login")
